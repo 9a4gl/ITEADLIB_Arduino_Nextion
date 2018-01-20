@@ -26,9 +26,13 @@
 /**
  * Init Nextion.  
  * 
+ * @param dbSerialBaudrate - debug serial port baudrate (default 9600).
+ *                           Pass 0 if serial port is already initialized.
+ * @param nexSerialBaudrate - nextion serial port baudrate (default 9600).
+ *                            Pass 0 if serial port is already initialized.
  * @return true if success, false for failure. 
  */
-bool nexInit(void);
+bool nexInit(int dbSerialBaudrate = 9600, int nexSerialBaudrate = 9600);
 
 /**
  * Listen touch event and calling callbacks attached before.

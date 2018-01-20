@@ -217,13 +217,19 @@ bool recvRetCommandFinished(uint32_t timeout)
 }
 
 
-bool nexInit(void)
+bool nexInit(int dbSerialBaudrate, int nexSerialBaudrate)
 {
     bool ret1 = false;
     bool ret2 = false;
-    
-    dbSerialBegin(9600);
-    nexSerial.begin(9600);
+
+    if (dbSerialBaudrate > 0)
+    {
+        dbSerialBegin(dbSerialBaudrate);
+    }
+    if (nexSerialBaudrate > 0)
+    {
+        nexSerial.begin(nexSerialBaudrate);
+    }
     sendCommand("");
     sendCommand("bkcmd=1");
     ret1 = recvRetCommandFinished();
